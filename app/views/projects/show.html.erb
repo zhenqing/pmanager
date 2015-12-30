@@ -4,6 +4,17 @@
   <strong>Title:</strong>
   <%= @project.title %>
 </p>
-
+<h2>Tasks</h2>
+<% if @project.tasks.any?%>
+    <ul>
+        <% @project.tasks.each do |task|%>
+        <li><%= link_to task, task %></li>
+        <% end %>
+    </ul>
+<% else %>
+    <p>
+        none tasks added
+    </p>
+<% end %>
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
