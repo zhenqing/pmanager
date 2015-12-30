@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Project.destroy_all
+Project.create!([{
+  title: "build a rails project"
+},
+{
+  title: "practise devops"
+},
+{
+  title: "make an iphone app"
+}
+]);
