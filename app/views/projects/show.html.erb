@@ -8,7 +8,7 @@
 <% if @project.tasks.any?%>
     <ul>
         <% @project.tasks.each do |task|%>
-        <li><%= link_to task, task %></li>
+        <li><%= link_to task.title, task %></li>
         <% end %>
     </ul>
 <% else %>
