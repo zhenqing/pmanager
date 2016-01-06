@@ -28,7 +28,7 @@
         </div>
         <div class="field">
             <%= task.label :status %>
-            <%= task.text_field :status %>
+            <%= task.collection_select :status,options_for_select([['notyet',1], ['inprocess',2],['finished',3]]) %>
         </div>
     </div>
   <% end %>
