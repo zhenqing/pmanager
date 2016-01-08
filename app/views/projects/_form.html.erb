@@ -30,6 +30,10 @@
             <%= task.label :status %>
             <%= task.check_box :status %>
         </div>
+        <div class="field">
+            <%= task.check_box :_destroy %>
+            <%= task.label :_destroy,'remove' %>
+        </div>
     </div>
   <% end %>
   <div class="actions">
