@@ -1,7 +1,7 @@
 class Task < ActiveRecord::Base
   extend Enumerize
   extend ActiveModel::Naming
-  enumerize :status, in: [:notyet, :inprocess,:finished], default: :notyet
+  enumerize :status, in: {notstart:1,inprocess:2,finished:3}
   belongs_to :project
 
   def slug
