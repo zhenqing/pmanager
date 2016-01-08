@@ -28,7 +28,7 @@
         </div>
         <div class="field">
             <%= task.label :status %>
-            <%= task.check_box :status %>
+            <%= task.select :status, %w[notyet inprocess finished] %>
         </div>
         <div class="field">
             <%= task.check_box :_destroy %>
