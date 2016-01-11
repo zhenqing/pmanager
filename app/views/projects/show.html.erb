@@ -11,11 +11,11 @@
     <ul class="list-group">
         <% @project.tasks.each do |task|%>
         <% if task.status==1%>
-        <li class="list-group-item list-group-item-info"><%= link_to task.title, task %></li>
+        <li class="list-group-item list-group-item-info"><input type="checkbox" <% if task.finished? %>checked<% end %>>  <%= link_to task.title, task %></li>
         <% elsif task.status==2%>
-        <li class="list-group-item list-group-item-warning"><%= link_to task.title, task %></li>
+        <li class="list-group-item list-group-item-warning"><input type="checkbox" <% if task.finished? %>checked<% end %>>  <%= link_to task.title, task %></li>
         <% else %>
-        <li class="list-group-item list-group-item-success"><%= link_to task.title, task %></li>
+        <li class="list-group-item list-group-item-success"><input type="checkbox" <% if task.finished? %>checked<% end %>>  <%= link_to task.title, task %></li>
         <% end %>
         <% end %>
     </ul>
