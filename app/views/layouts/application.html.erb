@@ -7,8 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav class="navbar navbar-inverse">
+    <%= link_to 'Project', projects_path,class:"navbar-brand" %>
+    <%= link_to 'New Project', new_project_path %>
+    <% if user_signed_in? %>
+        <span class="pull-right"><%= link_to 'Logout', destroy_user_session_path %></span>
+    <% else %>
+        <span class="pull-right"><%= link_to 'Sign In', new_user_session_path %></span>
+        <span class="pull-right"><%= link_to 'Sign Up', new_user_registration_path %></span>
+    <% end %>
+</nav>
+<div class="container">
+    <div class="col-md-4">
+        <p id="notice" class="alert"><%= notice %></p>
+        <%= yield %>
+    </div>
+</div>
 
-<%= yield %>
 
 </body>
 </html>

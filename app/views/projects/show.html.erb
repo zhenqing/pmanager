@@ -1,14 +1,18 @@
-<p id="notice"><%= notice %></p>
-
-<p>
+<h2>
   <strong>Title:</strong>
   <%= @project.title %>
-</p>
-<h2>Tasks</h2>
+</h2>
+<h3>Tasks</h3>
 <% if @project.tasks.any?%>
-    <ul>
+    <ul class="list-group">
         <% @project.tasks.each do |task|%>
-        <li><%= link_to task.title, task %></li>
+        <% if task.status==1%>
+        <li class="list-group-item list-group-item-info"><%= link_to task.title, task %></li>
+        <% elsif task.status==2%>
+        <li class="list-group-item list-group-item-warning"><%= link_to task.title, task %></li>
+        <% else %>
+        <li class="list-group-item list-group-item-success"><%= link_to task.title, task %></li>
+        <% end %>
         <% end %>
     </ul>
 <% else %>
@@ -16,5 +20,5 @@
         none tasks added
     </p>
 <% end %>
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Edit', edit_project_path(@project) , class:"btn btn-sm" %> |
+<%= link_to 'Back', projects_path , class:"btn btn-sm" %>
