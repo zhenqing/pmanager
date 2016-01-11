@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :tasks
+  resources :tasks do
+      post :update_row_order, on: :collection
+  end
   resources :notes
   resources :projects
   devise_for :users
