@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :notes do
       post :update_row_order, on: :collection
   end
-  resources :projects
+  resources :projects do
+      post :update_row_order, on: :collection
+  end
   devise_for :users
   root 'projects#index'
   # The priority is based upon order of creation: first created -> highest priority.

@@ -4,7 +4,14 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = Project.rank(:row_order).all
+  end
+  def update_row_order
+    @project = Project.find(task_params[:id])
+    @project.row_order_position = task_params[:row_order_position]
+    @project.save
+
+    render nothing: true
   end
 
   # GET /projects/1
