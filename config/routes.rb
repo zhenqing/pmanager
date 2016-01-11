@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :tasks do
       post :update_row_order, on: :collection
   end
-  resources :notes
+  resources :notes do
+      post :update_row_order, on: :collection
+  end
   resources :projects
   devise_for :users
   root 'projects#index'

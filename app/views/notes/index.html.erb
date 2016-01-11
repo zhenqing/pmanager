@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Notes</h1>
 
-<table>
+<table class="table table-bordered table-striped" id="sortable">
   <thead>
     <tr>
       <th>Content</th>
@@ -12,7 +10,7 @@
 
   <tbody>
     <% @notes.each do |note| %>
-      <tr>
+      <tr data-item-id= <%= "#{note.id}" %> class="item">
         <td><%= note.content %></td>
         <td><%= link_to 'Show', note %></td>
         <td><%= link_to 'Edit', edit_note_path(note) %></td>

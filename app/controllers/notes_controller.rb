@@ -4,9 +4,16 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.all
+    @notes = Note.rank(:row_order).all
   end
 
+   def update_row_order
+     @note = Note.find(task_params[:id])
+     @note.row_order_position = note_params[:row_order_position]
+     @note.save
+
+     render nothing: true
+   end
   # GET /notes/1
   # GET /notes/1.json
   def show
@@ -69,6 +76,6 @@ class NotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.require(:note).permit(:content)
+      params.require(:note).permit(:content,:id,:row_order_position)
     end
 end
