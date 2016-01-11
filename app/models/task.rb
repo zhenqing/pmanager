@@ -3,6 +3,8 @@ class Task < ActiveRecord::Base
   extend ActiveModel::Naming
   enumerize :status, in: {notstart:1,inprocess:2,finished:3}
   belongs_to :project
+  include RankedModel
+  ranks :row_order
 
   def slug
       title.downcase.gsub(" ","-")
