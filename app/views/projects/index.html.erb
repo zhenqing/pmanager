@@ -1,5 +1,6 @@
-<h2>Listing Projects</h2>
-
+<ol class="breadcrumb">
+  <li><a href="/">Projects</a></li>
+</ol>
     <table class="table table-bordered table-striped" id="sortable">
       <thead>
         <tr>
@@ -11,8 +12,7 @@
       <tbody>
         <% @projects.each do |project| %>
            <tr data-item-id= <%= "#{project.id}" %> class="item">
-            <td><%= project.title %></td>
-            <td><%= link_to 'Show', project %></td>
+            <td><%= link_to project.title, project %></td>
             <td><%= link_to 'Edit', edit_project_path(project) %></td>
             <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>

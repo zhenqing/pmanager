@@ -1,5 +1,8 @@
-<p id="notice"><%= notice %></p>
-
+<ol class="breadcrumb">
+  <li><%= link_to "Projects", projects_path%></li>
+  <li><%= link_to @task.project.title, @task.project%></li>
+  <li><%= link_to "Tasks", tasks_path, :data => {:tasks => @task.project.tasks}%></li>
+</ol>
 <p>
   <strong>Title:</strong>
   <%= @task.title %>

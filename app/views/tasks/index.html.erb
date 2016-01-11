@@ -1,5 +1,7 @@
 <h1>Listing Tasks</h1>
-
+<ol class="breadcrumb">
+  <li><%= link_to "Projects", projects_path%></li>
+</ol>
 <table class="table table-bordered table-striped" id="sortable">
   <thead>
     <tr>
@@ -18,7 +20,7 @@
         <td><%= task.content %></td>
         <td><%= task.status %></td>
         <td><%= link_to task.project.title, task.project %></td>
-        <td><%= link_to 'Show', task %><%= link_to 'Edit', edit_task_path(task) %><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) %>  <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
