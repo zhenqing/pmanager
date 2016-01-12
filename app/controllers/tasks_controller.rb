@@ -68,6 +68,13 @@ class TasksController < ApplicationController
     end
   end
 
+  def complete
+      @task = Task.find(params[:id])
+      @task.update_attribute(:finished,true)
+      @task.update_attribute(:finshed_at,Time.now)
+      redirect_to tasks_url, notice: "task completed"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
@@ -76,6 +83,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:id, :title, :content, :status, :row_order_position, :project_id)
+      params.require(:task).permit(:id, :title, :content, :status, :row_order_position, :project_id, :plan_finish_at, :finished)
     end
 end

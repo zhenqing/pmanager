@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
   resources :tasks do
       post :update_row_order, on: :collection
+      member do
+          patch :complete
+      end
+
   end
   resources :notes do
       post :update_row_order, on: :collection
   end
   resources :projects do
       post :update_row_order, on: :collection
+      member do
+          patch :complete
+      end
   end
   devise_for :users
   root 'projects#index'

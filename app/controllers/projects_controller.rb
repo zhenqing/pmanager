@@ -70,6 +70,13 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def complete
+      @project = Project.find(params[:id])
+      @project.update_attribute(:finished,true)
+      @project.update_attribute(:finshed_at,Time.now)
+      redirect_to projects_url
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
@@ -78,6 +85,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:title, tasks_attributes: [:id, :title, :content, :status, :_destroy])
+      params.require(:project).permit(:id,:title,:plan_finish_at,:finished, tasks_attributes: [:id, :title, :content, :status, :_destroy])
     end
 end

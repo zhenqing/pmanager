@@ -17,7 +17,8 @@
     <% @tasks.each do |task| %>
       <tr data-item-id= <%= "#{task.id}" %> class="item">
         <td><input type="checkbox" <% if task.finished? %>checked<% end %></td>
-        <td><%= task.title %></td>
+        <td><%= link_to "mark as finished", complete_task_path(task.id), method: :patch %></td>
+        <td><% if task.finished? %><strike><%= task.title%></strike><% else %><%= task.title %><% end %></td>
         <td><%= task.content %></td>
         <td><%= task.status %></td>
         <td><%= link_to task.project.title, task.project %></td>
