@@ -14,9 +14,19 @@
       <tbody>
         <% @projects.each do |project| %>
            <tr data-item-id= <%= "#{project.id}" %> class="item">
-            <td><input type="checkbox" <% if project.finished? %>checked<% end %>>
-                <% if project.finished? %><strike><%= link_to project.title, project,style:"opacity: 0.4;" %></strike><% else %><%= link_to project.title, project %><% end %></td>
-            <td><%= link_to "mark as finished" ,complete_project_path(project.id), method: :patch%></td>
+            <td>
+                <% if project.finished? %>
+                	<%= link_to complete_project_path(project.id), method: :patch do %>
+        				<i style="opacity: 0.4;" class="fa fa-check-square-o"></i>
+        			<% end %>
+                    <strike><%= link_to project.title, project,style:"opacity: 0.4;" %></strike>
+                <% else %>
+                    <%= link_to complete_project_path(project.id), method: :patch do %>
+                        <i class="fa fa-square-o"></i>
+                    <% end %>
+                    <%= link_to project.title, project %>
+                <% end %>
+            </td>
             <td><%= project.created_at%></td>
             <td><%= project.plan_finish_at%></td>
             <td><%= link_to 'Edit', edit_project_path(project) %>

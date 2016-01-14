@@ -1,11 +1,8 @@
-Feature: add task
-In order to add new task
-As a users
-I want to be able to add my own tasks
+Feature: mark a task as finished
 
 Background: Logged as an existing user
 
-Scenario: Add a task
+Scenario: Mark a task as finished
     Given I am on "tasks"
     When I follow "New task"
     Then I should be on "new_task"

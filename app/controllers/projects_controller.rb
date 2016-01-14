@@ -72,8 +72,14 @@ class ProjectsController < ApplicationController
 
   def complete
       @project = Project.find(params[:id])
-      @project.update_attribute(:finished,true)
-      @project.update_attribute(:finshed_at,Time.now)
+      if @project.finished?
+           @project.update_attribute(:finished,false)
+           @project.update_attribute(:finshed_at,nil)
+      else
+           @project.update_attribute(:finished,true)
+           @project.update_attribute(:finshed_at,Time.now)
+      end
+
       redirect_to projects_url
   end
 
