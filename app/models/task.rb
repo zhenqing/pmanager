@@ -7,6 +7,7 @@ class Task < ActiveRecord::Base
   ranks :row_order
 scope :finished, ->{where(finished:true)}
 scope :unfinished, ->{where(finished:false)}
+scope :display, ->{where(display:true)}      
 
   def slug
       title.downcase.gsub(" ","-")

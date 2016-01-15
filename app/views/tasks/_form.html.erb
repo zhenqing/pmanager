@@ -10,7 +10,8 @@
       </ul>
     </div>
   <% end %>
-
+ <%= f.hidden_field :display , :value => true%>
+ <%= f.hidden_field :finished , :value => false%>
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>

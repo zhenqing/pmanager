@@ -3,9 +3,17 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
   # GET /tasks
   # GET /tasks.json
+  def clean
+      tasks = Task.finished()
+      tasks.each do |task|
+          task.update_attribute(:display,false)
 
+      end
+
+      redirect_to tasks_url, notice: " task cleaned"
+  end
   def index
-    @tasks = Task.rank(:row_order).all
+    @tasks = Task.display().rank(:row_order).all
   end
   def update_row_order
     @task = Task.find(task_params[:id])
@@ -99,6 +107,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:id, :title, :content, :status, :row_order_position, :project_id, :plan_finish_at, :finished)
+      params.require(:task).permit(:id, :title, :content, :status, :row_order_position, :project_id, :plan_finish_at, :finished, :display)
     end
 end

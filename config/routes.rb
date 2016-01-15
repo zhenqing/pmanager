@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :tasks do
+      collection do
+          match 'tasks_clean', to: 'tasks#clean', via: [:get]
+      end
       post :update_row_order, on: :collection
       member do
           patch :complete
