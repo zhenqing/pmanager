@@ -5,6 +5,8 @@ class Task < ActiveRecord::Base
   belongs_to :project
   include RankedModel
   ranks :row_order
+scope :finished, ->{where(finished:true)}
+scope :unfinished, ->{where(finished:false)}
 
   def slug
       title.downcase.gsub(" ","-")

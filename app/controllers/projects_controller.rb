@@ -3,8 +3,17 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
   # GET /projects
   # GET /projects.json
+  def clean
+      projects = Project.finished()
+      projects.each do |project|
+          project.update_attribute(:display,false)
+
+      end
+
+      redirect_to projects_url, notice: "projects cleaned"
+  end
   def index
-    @projects = Project.rank(:row_order).all
+    @projects = Project.display().rank(:row_order).all
   end
   def update_row_order
     @project = Project.find(task_params[:id])
@@ -82,6 +91,7 @@ class ProjectsController < ApplicationController
 
       redirect_to projects_url
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

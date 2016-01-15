@@ -5,6 +5,9 @@ class Project < ActiveRecord::Base
     accepts_nested_attributes_for :tasks,
                                  reject_if: proc{|attributes| attributes['title'].blank?},
                                  allow_destroy: true
+    scope :finished, ->{where(finished:true)}
+    scope :unfinished, ->{where(finished:false)}
+    scope :display, ->{where(display:true)}                          
     def slug
         title.downcase.gsub(" ","-")
     end

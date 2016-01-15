@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111213432) do
+ActiveRecord::Schema.define(version: 20160114215308) do
 
   create_table "notes", force: :cascade do |t|
     t.string   "content"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160111213432) do
     t.boolean  "finished"
     t.datetime "finshed_at"
     t.datetime "plan_finish_at"
+    t.boolean  "display"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -41,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160111213432) do
     t.boolean  "finished"
     t.datetime "finshed_at"
     t.datetime "plan_finish_at"
+    t.boolean  "display"
   end
 
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"

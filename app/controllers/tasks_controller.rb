@@ -3,6 +3,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
   # GET /tasks
   # GET /tasks.json
+ 
   def index
     @tasks = Task.rank(:row_order).all
   end
@@ -70,9 +71,24 @@ class TasksController < ApplicationController
 
   def complete
       @task = Task.find(params[:id])
-      @task.update_attribute(:finished,true)
-      @task.update_attribute(:finshed_at,Time.now)
+      if @task.finished?
+           @task.update_attribute(:finished,false)
+           @task.update_attribute(:finshed_at,nil)
+      else
+           @task.update_attribute(:finished,true)
+           @task.update_attribute(:finshed_at,Time.now)
+      end
+
       redirect_to tasks_url, notice: "task completed"
+  end
+  def clean
+      @tasks = Task.finished()
+      @tasks.each do |task|
+          task.update_attribute(:display,false)
+
+      end
+
+      redirect_to tasks_url, notice: "tasks cleaned"
   end
 
   private
