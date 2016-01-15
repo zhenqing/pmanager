@@ -16,8 +16,8 @@ class ProjectsController < ApplicationController
     @projects = Project.display().rank(:row_order).all
   end
   def update_row_order
-    @project = Project.find(task_params[:id])
-    @project.row_order_position = task_params[:row_order_position]
+    @project = Project.find(project_params[:id])
+    @project.row_order_position = project_params[:row_order_position]
     @project.save
 
     render nothing: true
@@ -101,6 +101,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:id,:title,:plan_finish_at,:finished, tasks_attributes: [:id, :title, :content, :status, :_destroy])
+      params.require(:project).permit(:id,:title,:plan_finish_at,:finished,:display, tasks_attributes: [:id, :title, :content, :status, :_destroy])
     end
 end

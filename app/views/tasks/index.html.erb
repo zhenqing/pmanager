@@ -18,12 +18,12 @@
       <tr data-item-id= <%= "#{task.id}" %> class="item">
         <td>
         <% if task.finished? %>
-            <%= link_to "mark as finished", complete_task_path(task.id), method: :patch do %>
+            <%= link_to complete_task_path(task.id), method: :patch do %>
             <i class="fa fa-check-square-o"></i>
             <% end %>
             <strike><%= task.title%></strike>
         <% else %>
-            <%= link_to "mark as finished", complete_task_path(task.id), method: :patch do %>
+            <%= link_to complete_task_path(task.id), method: :patch do %>
             <i class="fa fa-square-o"></i>
             <% end %>
             <%= task.title %>

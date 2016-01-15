@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
   # GET /tasks
   # GET /tasks.json
- 
+
   def index
     @tasks = Task.rank(:row_order).all
   end
