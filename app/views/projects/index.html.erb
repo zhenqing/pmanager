@@ -2,7 +2,8 @@
   <li><a href="/">Projects</a></li>
 </ol>
 <%= form_tag search_projects_projects_path,:method => :post do %>
-    <input class="search full-width" id="searchbar" name="query" placeholder="search projects" type="text"/>
+<%= text_field_tag "search",params[:search] %>
+<%= submit_tag "search projects",:name => nil %>
 <% end %>
 <br/>
     <table class="table table-bordered table-striped" id="sortable">
