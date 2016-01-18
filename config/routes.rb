@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :projects do
       collection do
           match 'projects_clean', to: 'projects#clean', via: [:get]
+          match 'search_projects',to: 'projects#search', via: [:post]
       end
       post :update_row_order, on: :collection
       member do

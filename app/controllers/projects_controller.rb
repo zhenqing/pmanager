@@ -27,6 +27,11 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
   end
+  def search
+      @q = "%#{params[:query]}%"
+      @projects = Project.where("title LIKE ?",@q)
+      render 'index'
+  end
 
   # GET /projects/new
   def new

@@ -1,6 +1,10 @@
 <ol class="breadcrumb">
   <li><a href="/">Projects</a></li>
 </ol>
+<%= form_tag search_projects_projects_path,:method => :post do %>
+    <input class="search full-width" id="searchbar" name="query" placeholder="search projects" type="text"/>
+<% end %>
+<br/>
     <table class="table table-bordered table-striped" id="sortable">
       <thead>
         <tr>
