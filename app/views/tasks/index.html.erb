@@ -8,10 +8,10 @@
 <table class="table table-bordered table-striped" id="sortable">
   <thead>
     <tr>
-      <th><%= link_to "Title",:sort => "title" %></th>
-      <th><%= link_to "Content",:sort => "content" %></th>
-      <th><%= link_to "Status",:sort => "status" %></th>
-      <th><%= link_to "Project",:sort => "project_id" %></th>
+      <th><%= sortable "title" %></th>
+      <th><%= sortable "content" %></th>
+      <th><%= sortable "status" %></th>
+      <th><%= sortable "project_id", "project" %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -45,3 +45,4 @@
 <%= link_to "clean tasks", tasks_clean_tasks_path %>
 <br>
 <%= link_to 'New Task', new_task_path %>
+<% console %>

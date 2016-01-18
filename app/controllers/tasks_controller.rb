@@ -3,6 +3,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
   # GET /tasks
   # GET /tasks.json
+  helper_method :sort_column, :sort_direction
   def clean
       tasks = Task.finished()
       tasks.each do |task|
@@ -13,7 +14,7 @@ class TasksController < ApplicationController
       redirect_to tasks_url, notice: " task cleaned"
   end
   def index
-    @tasks = Task.display().order(params[:sort]).rank(:row_order).paginate(:page => params[:page], :per_page => 4)
+    @tasks = Task.display().order(params[:sort] + " " + params[:direction]).rank(:row_order).paginate(:page => params[:page], :per_page => 4)
 
   end
   def update_row_order
@@ -114,5 +115,13 @@ class TasksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
       params.require(:task).permit(:id, :title, :content, :status, :row_order_position, :project_id, :plan_finish_at, :finished, :display)
+    end
+
+    def sort_column
+        Task.column_names.include?(params[:sort]) ? params[:sort] : "title"
+    end
+
+    def sort_direction
+        %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end

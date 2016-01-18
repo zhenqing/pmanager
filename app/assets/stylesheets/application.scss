@@ -12,6 +12,17 @@
  *
  */
 
+.current{
+    padding-right: 12px;
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+.asc {
+    background-image :url(/images/up-triangle.gif);
+}
+.desc {
+    background-image :url(/images/down-triangle.gif);
+}
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "jquery-ui"
