@@ -13,7 +13,8 @@ class TasksController < ApplicationController
       redirect_to tasks_url, notice: " task cleaned"
   end
   def index
-    @tasks = Task.display().rank(:row_order).all
+    @tasks = Task.display().rank(:row_order).all.paginate(:page => params[:page], :per_page => 4)
+
   end
   def update_row_order
     @task = Task.find(task_params[:id])
