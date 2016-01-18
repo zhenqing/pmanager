@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  helper_method :sort_column, :sort_direction
   # GET /projects
   # GET /projects.json
   def clean
@@ -13,7 +14,7 @@ class ProjectsController < ApplicationController
       redirect_to projects_url, notice: "projects cleaned"
   end
   def index
-    @projects = Project.display().rank(:row_order).all
+    @projects = Project.display().order(sort_column + " " + sort_direction).rank(:row_order).all
   end
   def update_row_order
     @project = Project.find(project_params[:id])
@@ -107,5 +108,12 @@ class ProjectsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:id,:title,:plan_finish_at,:finished,:display, tasks_attributes: [:id, :title, :content, :status, :_destroy])
+    end
+    def sort_column
+        Project.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+    end
+
+    def sort_direction
+        %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end

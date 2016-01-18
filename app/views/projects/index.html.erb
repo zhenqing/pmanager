@@ -9,9 +9,9 @@
     <table class="table table-bordered table-striped" id="sortable">
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Create Time</th>
-          <th>Plan Finish Time</th>
+          <th><%= sortable "title","Title" %></th>
+          <th><%= sortable "created_at","Create Time" %></th>
+          <th><%= sortable "plan_finish_at","Plan Finish Time" %></th>
           <th colspan="2"></th>
         </tr>
       </thead>
@@ -44,3 +44,4 @@
 <%= link_to "clean projects", projects_clean_projects_path %>
 
 <br>
+<% console %>

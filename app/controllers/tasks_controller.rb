@@ -14,7 +14,7 @@ class TasksController < ApplicationController
       redirect_to tasks_url, notice: " task cleaned"
   end
   def index
-    @tasks = Task.display().order(params[:sort] + " " + params[:direction]).rank(:row_order).paginate(:page => params[:page], :per_page => 4)
+    @tasks = Task.display().order(sort_column + " " + sort_direction).rank(:row_order).paginate(:page => params[:page], :per_page => 4)
 
   end
   def update_row_order
