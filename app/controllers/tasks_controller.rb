@@ -27,6 +27,11 @@ class TasksController < ApplicationController
   # GET /tasks/1.json
   def show
   end
+  def search
+      @q = "%#{params[:query1]}%"
+      @tasks = Task.where("title LIKE ? or content LIKE ?",@q,@q)
+      render 'index'
+  end
 
   # GET /tasks/new
   def new

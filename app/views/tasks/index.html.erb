@@ -2,6 +2,9 @@
 <ol class="breadcrumb">
   <li><%= link_to "Projects", projects_path%></li>
 </ol>
+<%= form_tag search_tasks_path,:method => :post do %>
+    <input class="search full-width" id="searchbar" name="query1" placeholder="search tasks" type="text"/>
+<% end %>
 <table class="table table-bordered table-striped" id="sortable">
   <thead>
     <tr>

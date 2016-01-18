@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :tasks do
       collection do
           match 'tasks_clean', to: 'tasks#clean', via: [:get]
+          match 'search',to: 'tasks#search', via: [:post]
       end
       post :update_row_order, on: :collection
       member do
